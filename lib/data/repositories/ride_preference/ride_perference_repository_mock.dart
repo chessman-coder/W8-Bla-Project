@@ -7,4 +7,14 @@ class RidePerferenceRepositoryMock implements RidePerferenceRepository {
   Future<List<RidePreference>> getRidePref() async {
     return fakeRidePrefs;
   }
+
+  @override
+  Future<void> addRidePref(RidePreference pref) async {
+    return fakeRidePrefs.add(pref);
+  }
+
+  @override
+  Future<void> removeRidePref(RidePreference pref) async {
+    fakeRidePrefs.remove(pref);
+  }
 }

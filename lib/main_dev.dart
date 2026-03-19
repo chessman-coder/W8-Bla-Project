@@ -4,6 +4,7 @@ import 'package:blabla/data/repositories/ride/ride_repository.dart';
 import 'package:blabla/data/repositories/ride/ride_repository_mock.dart';
 import 'package:blabla/data/repositories/ride_preference/ride_perference_repository.dart';
 import 'package:blabla/data/repositories/ride_preference/ride_perference_repository_mock.dart';
+import 'package:blabla/ui/states/ride_preference_state.dart';
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
 
@@ -16,6 +17,10 @@ List<SingleChildWidget> get devProvider {
       create: (_) => RidePerferenceRepositoryMock(),
     ),
     Provider<RideRepository>(create: (_) => RideRepositoryMock()),
+    ChangeNotifierProvider<RidePreferenceState>(
+      create: (context) =>
+          RidePreferenceState(context.read<RidePerferenceRepository>()),
+    ),
   ];
 }
 
